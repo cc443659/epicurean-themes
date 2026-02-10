@@ -1,0 +1,133 @@
+/* # fonts, root */
+
+/* font imports */
+
+@font-face {
+    src: url("assets/fonts/bondi-regular-font/Bondi-oZRx.ttf");
+    font-family: 'Bondi';
+}
+
+/* root variables */
+
+:root {
+    --heading-font-family: 'Bondi';
+    --heading-font-size: calc(18px + 1vmin);
+    --colour-1: #fbfaf8;
+    --colour-2: #e3dfd4;
+    --colour-3: #b17457;
+    --colour-4: #4a4947;
+}
+
+/* # navigation */
+
+/* responsiveness */
+
+@media only screen and (min-width: 900px) {
+    .navbar {
+        width: calc(300px + 2vw);
+        height: 100vh;
+    }
+
+    .nav-toggle {
+        justify-self: flex-end;
+        align-self: flex-start;
+    }
+
+    .menu-container {
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .navbar {
+        width: 100vw;
+        height: calc(300px + 2vh);
+    }
+
+    .nav-toggle {
+        top: calc((300px + 2vh) - (35px + 0.5vw) - 20px);
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
+
+    .menu-container {
+        height: max-content;
+    }
+
+    .menu-container li {
+        justify-content: center;
+    }
+}
+
+/* main container */
+
+.navbar {
+    font-family: var(--heading-font-family);
+    font-size: var(--heading-font-size);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--colour-3);
+}
+
+.nav-toggle {
+    position: fixed;
+    display: flex;
+    margin: 10px;
+    padding: 2px;
+    width: calc(35px + 0.5vw);
+    height: auto;
+    color: var(--colour-2);
+    background-color: transparent;
+    border: none;
+    transition: all 0.2s;
+    background-color: var(--colour-3);
+    border-radius: 2px;
+}
+
+.nav-toggle:hover {
+    color: var(--colour-1);
+}
+
+/* inner container containing menu items */
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    align-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+/* menu items */
+
+.menu-container li {
+    cursor: pointer;
+    display: flex;
+    margin: 2vh;
+    padding: 0.2px;
+}
+
+.menu-container a {
+    text-decoration: none;
+    transition: all 0.2s;
+    color: var(--colour-2);
+}
+
+.menu-container a:hover {
+    scale: 103%;
+    color: var(--colour-1);
+}
+
+.menu-container a.active,
+.menu-container a.active:hover,
+.menu-container li:has(a.active),
+.menu-container li:has(a.active):hover {
+    color: var(--colour-1);
+    pointer-events: none;
+    cursor: none;
+}
