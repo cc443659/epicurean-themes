@@ -1,10 +1,56 @@
 /* # fonts, root */
 
-/* font imports */
+/* font imports - headings */
 
 @font-face {
-    src: url("assets/fonts/bondi-regular-font/Bondi-oZRx.ttf");
     font-family: 'Bondi';
+    src: url("assets/fonts/bondi-regular-font/Bondi-oZRx.ttf");
+}
+
+/* font imports - body text */
+
+@font-face {
+    /* regular */
+    font-family: 'Perspective Sans';
+    src: url("assets/fonts/perspective-sans-font/PerspectiveSans-Eagg.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    /* bold */
+    font-family: 'Perspective Sans';
+    src: url("assets/fonts/perspective-sans-font/PerspectiveSansBold-3zny.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    /* bold italic */
+    font-family: 'Perspective Sans';
+    src: url("assets/fonts/perspective-sans-font/PerspectiveSansBoldItalic-x35V.ttf");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    /* italic */
+    font-family: 'Perspective Sans';
+    src: url("assets/fonts/perspective-sans-font/PerspectiveSansItalic-p76v.ttf");
+    font-style: italic;
+}
+
+@font-face {
+    /* black italic */
+    font-family: 'Perspective Sans';
+    src: url("assets/fonts/perspective-sans-font/PerspectiveSansBlackItalic-ZVXl.ttf");
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    /* black */
+    font-family: 'Perspective Sans';
+    src: url("assets/fonts/perspective-sans-font/PerspectiveSansBlack-OVro.ttf");
+    font-weight: 900;
 }
 
 /* root variables */
@@ -12,10 +58,15 @@
 :root {
     --heading-font-family: 'Bondi';
     --heading-font-size: calc(18px + 1vmin);
+    --body-font-family: 'Perspective Sans';
+    --body-font-size: calc(14px + 1vmin);
     --colour-1: #fbfaf8;
     --colour-2: #e3dfd4;
     --colour-3: #b17457;
     --colour-4: #4a4947;
+    --colour-5: #111010;
+    --navbar-width: calc(300px + 2vw);
+    --navbar-height: calc(300px + 2vh);
 }
 
 /* # navigation */
@@ -23,58 +74,111 @@
 /* responsiveness */
 
 @media only screen and (min-width: 900px) {
-    .navbar {
-        width: calc(300px + 2vw);
+
+    #navbar {
+        width: var(--navbar-width);
         height: 100vh;
     }
 
-    .nav-toggle {
-        justify-self: flex-end;
+    #nav-toggle {
         align-self: flex-start;
+    }
+
+    #nav-toggle, #nav-toggle.nav-enabled {
+        left: calc(var(--navbar-width) - (35px + 0.5vw) - 20px);
+    }
+
+    #nav-toggle.nav-disabled {
+        left: 0px;
     }
 
     .menu-container {
         height: 100vh;
+    }
+
+    article, footer {
+        top: 0;
+    }
+
+    article, article.nav-enabled, footer, footer.nav-enabled {
+        left: var(--navbar-width);
+        width: calc(100vw - var(--navbar-width));
+    }
+
+    article.nav-disabled, footer.nav-disabled {
+        left: 0;
     }
 }
 
 @media only screen and (max-width: 900px) {
-    .navbar {
+
+    #navbar {
         width: 100vw;
-        height: calc(300px + 2vh);
+        height: var(--navbar-height);
     }
 
-    .nav-toggle {
-        top: calc((300px + 2vh) - (35px + 0.5vw) - 20px);
+    #nav-toggle {
         justify-self: flex-end;
         align-self: flex-end;
     }
 
+    #nav-toggle, #nav-toggle.nav-enabled {
+        top: calc((300px + 2vh) - (35px + 0.5vw) - 20px);
+    }
+
+    #nav-toggle.nav-disabled {
+        top: 0px;
+    }
+
     .menu-container {
         height: max-content;
+        align-items: center;
     }
 
     .menu-container li {
         justify-content: center;
     }
+
+    article, footer {
+        left: 0;
+    }
+
+    article, article.nav-enabled, footer, footer.nav-enabled {
+        top: var(--navbar-height);
+        height: calc(100vh - var(--navbar-height));
+    }
+
+    article.nav-disabled, footer.nav-disabled {
+        top: 0;
+    }
+    
 }
 
 /* main container */
 
-.navbar {
+#navbar {
     font-family: var(--heading-font-family);
     font-size: var(--heading-font-size);
     position: fixed;
     top: 0;
     left: 0;
+    transition: all 0.3s;
     background-color: var(--colour-3);
 }
 
-.nav-toggle {
+#navbar.nav-enabled {
+    display: block;
+}
+
+#navbar.nav-disabled {
+    display: none;
+}
+
+#nav-toggle {
     position: fixed;
     display: flex;
     margin: 10px;
-    padding: 2px;
+    padding: 6px;
     width: calc(35px + 0.5vw);
     height: auto;
     color: var(--colour-2);
@@ -83,9 +187,10 @@
     transition: all 0.2s;
     background-color: var(--colour-3);
     border-radius: 2px;
+    z-index: 5;
 }
 
-.nav-toggle:hover {
+#nav-toggle:hover {
     color: var(--colour-1);
 }
 
@@ -130,4 +235,28 @@
     color: var(--colour-1);
     pointer-events: none;
     cursor: none;
+}
+
+/* main page content */
+
+body {
+    color: var(--colour-5);
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size);
+}
+
+article {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    position: fixed;
+}
+
+footer {
+    position: fixed;
+}
+
+footer > ul {
+    list-style: none;
 }
