@@ -5,17 +5,28 @@
 </button>
 <nav id="navbar">
     <menu class="menu-container">
+        <?php
+            $path = basename($_SERVER['PHP_SELF']);
+        ?>
         <li>
-            <a href="index.html" class="active">Home Page</a>
+            <a href="index.php" <?php 
+            $status = $path == "index.php" ? "class=\"active\"" : "";
+            echo $status; ?>>Home Page</a>
         </li>
         <li>
-            <a href="book-table.html">Book Table</a>
+            <a href="book-table.php" <?php 
+            $status = $path == "book-table.php" ? "class=\"active\"" : "";
+            echo $status; ?>>Book Table</a>
         </li>
         <li>
-            <a href="view-menu.php">View Menu</a>
+            <a href="view-menu.php" <?php 
+            $status = $path == "view-menu.php" ? "class=\"active\"" : "";
+            echo $status; ?>>View Menu</a>
         </li>
         <li>
-            <a href="staff-portal.php">Staff Portal</a>
+            <a href="staff-portal.php" <?php 
+            $status = $path == "staff-portal.php" ? "class=\"active\"" : "";
+            echo $status; ?>>Staff Portal</a>
         </li>
     </menu>
 </nav>

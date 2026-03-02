@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epicurean Themes - Title</title>
+    <title>Epicurean Themes - View Menu</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -12,6 +12,7 @@
 
     <!-- main body content -->
     <article>
+        <p>Sorry! This page is not yet available. It will be built in a future iteration.</p>
         <!-- footer -->
         <?php include "assets/components/footer.php"; ?>
     </article>

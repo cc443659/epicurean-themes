@@ -12,11 +12,20 @@
 
     <!-- main body content -->
     <article>
-
+        <h1>Home</h1>
+        <section class="flex-container">
+            <div>
+                <p>Welcome to Epicurean Themes, where we leverage creativity in order to provide you with the enjoyment you deserve while dining.</p>
+                <p>Our mission is to launch immersive hospitality experiences where the decor, menu, and digital presence all guide you through a cohesive story.</p>
+            </div>
+            <a href="book-table.php">
+                <button class="call-to-action">Book now!</button>
+            </a>
+        </section>
+        <!-- footer -->
+        <?php include "assets/components/footer.php"; ?>
     </article>
 
-    <!-- footer -->
-    <?php include "assets/components/footer.php"; ?>
     <script type="module" src="script.js"></script>
 </body>
 </html>
