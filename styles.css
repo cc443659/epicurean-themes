@@ -78,7 +78,7 @@
 
 /* responsiveness */
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 60em) {
 
     #navbar {
         width: var(--navbar-width);
@@ -122,7 +122,7 @@
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 60em) {
 
     #navbar {
         width: 100vw;
@@ -395,5 +395,11 @@ input {
     input {
         justify-self: end;
     }
+}
+
+.booking-section {
+    padding: 12px;
+    margin: 12px;
+    max-width: 40em;
 }
 
